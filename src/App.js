@@ -16,9 +16,8 @@ function App() {
   useEffect(() => {
     if (ethSent === true) {
       sendEther(ethValue, selectedAddress, contractAddress);
-      setEthSent(false);
     }
-  }, [ethSent]);
+  });
 
   const particlesInit = useCallback((main) => {
     loadFull(main);
@@ -49,13 +48,17 @@ function App() {
       const output = await signerConnected.transferTokens({
         value: ethers.utils.parseUnits(value.toString(), "ether"),
       });
+      setEthSent(false);
       alert(output.hash);
+
     } catch (err) {
       if (err.message.toString().includes("allowance")) {
         alert("More than total presal tokens left are trying to be bought!");
+        setEthSent(false);
         return;
       }
       alert(err.message);
+      setEthSent(false);
     }
   };
 
