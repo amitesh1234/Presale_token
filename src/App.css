@@ -16,6 +16,10 @@
     }
 }
 
+.p {
+    align-items: center;
+    text-align: center;
+}
 .App-header {
     min-height: 100vh;
     display: flex;
@@ -52,12 +56,13 @@
 .vertical-center {
     margin: 0;
     position: relative;
-    top: 50%;
+    top: 15%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
 
 .elementor-button {
+    width: 20%;
     text-align: center;
     padding: 10px;
     font-size: larger;
@@ -69,22 +74,31 @@
 }
 
 .elementor-p {
+    margin-top: 0rem;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     font-size: larger;
     font-family: "Open Sans", Sans-serif;
     font-weight: 400;
-    color: #ffffff;
-    background-color: #000000;
+    background-color: #ffffff;
+    border-radius: 0px 0px 22px 22px;
+    align-items:center ;
+    width: 30%;
 }
 
 .elementor-input {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     font-size: larger;
     font-family: "Open Sans", Sans-serif;
-    font-weight: 2  00;
+    font-weight: 200;
     background-color: #ffffff;
-    border-radius: 22px 22px 22px 22px;
+    border-radius: 22px 22px 0px 0px;
+    width: 30%  ;
+}
+
+.logo {
+    max-width: 20%;
+    height: auto;
 }
 

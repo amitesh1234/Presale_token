@@ -51,7 +51,6 @@ function App() {
       });
       setEthSent(false);
       alert(output.hash);
-
     } catch (err) {
       if (err.message.toString().includes("allowance")) {
         alert("More than total presal tokens left are trying to be bought!");
@@ -79,6 +78,7 @@ function App() {
     return (
       <div className="App">
         <Particles options={particlesOptions} init={particlesInit} />
+        <img class = "logo" src={require('.//img/ShibRobo.png')} alt= "ShibRobo"></img>
         <div class="vertical-center">
           <button onClick={connect} type="submit" class="elementor-button">
             Connect To Metamask
@@ -92,6 +92,7 @@ function App() {
   return (
     <div className="App">
       <Particles options={particlesOptions} init={particlesInit} />
+      <img class = "logo" src={require('.//img/ShibRobo.png')} alt= "ShibRobo"></img>
       <div class="vertical-center">
         <input
           type="number"
@@ -101,9 +102,11 @@ function App() {
           placeholder="Enter Eth Value"
           onChange={(e) => setEthValue(e.currentTarget.value)}
         ></input>
-        <br></br>
-        <br></br>
-        <p  class="elementor-p">You get {ethValue * conversion} SHIBROBO tokens </p>
+        <center>
+          <p class="elementor-p">
+            {ethValue * conversion} SHIBROBO tokens{" "}
+          </p>
+        </center>
         <br></br>
         <button type="submit" class="elementor-button" onClick={buy}>
           Buy Now
