@@ -10,8 +10,8 @@ function App() {
   const [selectedAddress, setSetSelectedAddress] = useState("");
   const [ethValue, setEthValue] = useState(0);
   const [ethSent, setEthSent] = useState(false);
-  const contractAddress = "0x82B6a6065129f52d79e03c33Dc753f70FC424966";
-  const chainId = 5; //change
+  const contractAddress = "0x7c73e4faF280638b6411EA86ff19C5F8328C56DB";
+  const chainId = 1; //change
   const conversion = 100000000000;
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function App() {
       const signerConnected = await contract.connect(provider.getSigner());
       console.log(ethers.utils.parseEther(value.toString()));
       const output = await signerConnected.transferTokens({
-        value: ethers.utils.parseEther(value)
+        value: ethers.utils.parseUnits(value,9)
       });
       setEthSent(false);
       alert(output.hash);
