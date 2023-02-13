@@ -60,6 +60,9 @@
     "shape": {
       "type": "circle"
     },
+    "polygon": {
+      "nb_sides": 5
+    },
     "size": {
       "random": true,
       "value": 5
