@@ -1,23 +1,20 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
-import logo from "./logo.svg";
 import "./App.css";
 import particlesOptions from "./particles.json";
 import { ethers } from 'ethers';
-import Web3 from "web3";
 import presaletoken from"./PresaleToken.json";
 
 function App() {
   const [selectedAddress, setSetSelectedAddress] = useState("");
-  const [provider, setProvider] = useState("");
   const [ethValue, setEthValue] = useState(0);
   const [ethSent, setEthSent] = useState(false);
   const contractAddress = "0xa5bb3A2cB5FE910562A711DcA1680714f766F9Ba";
 
   useEffect(() => {
     if (ethSent === true) {
-      sendEther(ethValue, provider, selectedAddress, contractAddress);
+      sendEther(ethValue, selectedAddress, contractAddress);
     }
   });
 
@@ -33,7 +30,7 @@ function App() {
     console.log(this.state.selectedAddress);
   };
 
-  const sendEther = async (value, provider, account, contractAddress) => {
+  const sendEther = async (value, account, contractAddress) => {
     const contract = await new ethers.Contract(contractAddress, presaletoken.abi, new ethers.providers.Web3Provider(window.ethereum));
     console.log(contract);
     const signerConnected = await contract.connect(account);
