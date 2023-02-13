@@ -18,7 +18,7 @@ function App() {
       sendEther(ethValue, selectedAddress, contractAddress);
       setEthSent(false);
     }
-  });
+  }, [ethSent]);
 
   const particlesInit = useCallback((main) => {
     loadFull(main);
