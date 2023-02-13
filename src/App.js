@@ -10,7 +10,7 @@ function App() {
   const [selectedAddress, setSetSelectedAddress] = useState("");
   const [ethValue, setEthValue] = useState(0);
   const [ethSent, setEthSent] = useState(false);
-  const contractAddress = "0xa5bb3A2cB5FE910562A711DcA1680714f766F9Ba";
+  const contractAddress = "0x82B6a6065129f52d79e03c33Dc753f70FC424966";
   const chainId = 5; //change
   const conversion = 100000000000;
 
@@ -39,16 +39,17 @@ function App() {
 
   const sendEther = async (value, account, contractAddress) => {
     try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
       const contract = await new ethers.Contract(
         contractAddress,
         presaletoken.abi,
-        new ethers.providers.Web3Provider(window.ethereum)
+        provider
       );
       console.log(contract);
-      const signerConnected = await contract.connect(account);
-      console.log(ethers.utils.parseUnits(value.toString(), "ether"));
+      const signerConnected = await contract.connect(provider.getSigner());
+      console.log(ethers.utils.parseEther(value.toString()));
       const output = await signerConnected.transferTokens({
-        value: ethers.utils.parseUnits(value.toString(), "ether"),
+        value: ethers.utils.parseEther(value)
       });
       setEthSent(false);
       alert(output.hash);
