@@ -68,6 +68,16 @@
     border-radius: 22px 22px 22px 22px;
 }
 
+.elementor-p {
+    text-align: center;
+    padding: 10px;
+    font-size: larger;
+    font-family: "Open Sans", Sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #000000;
+}
+
 .elementor-input {
     text-align: center;
     padding: 10px;

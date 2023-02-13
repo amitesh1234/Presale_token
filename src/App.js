@@ -12,6 +12,7 @@ function App() {
   const [ethSent, setEthSent] = useState(false);
   const contractAddress = "0xa5bb3A2cB5FE910562A711DcA1680714f766F9Ba";
   const chainId = 5; //change
+  const conversion = 100000000000;
 
   useEffect(() => {
     if (ethSent === true) {
@@ -101,6 +102,8 @@ function App() {
           onChange={(e) => setEthValue(e.currentTarget.value)}
         ></input>
         <br></br>
+        <br></br>
+        <p  class="elementor-p">You get {ethValue * conversion} SHIBROBO tokens </p>
         <br></br>
         <button type="submit" class="elementor-button" onClick={buy}>
           Buy Now
