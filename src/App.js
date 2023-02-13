@@ -57,6 +57,11 @@ function App() {
         setEthSent(false);
         return;
       }
+      if (err.message.toString().includes("insufficient funds")) {
+        alert("Insufficient funds in account!");
+        setEthSent(false);
+        return;
+      }
       alert(err.message);
       setEthSent(false);
     }
