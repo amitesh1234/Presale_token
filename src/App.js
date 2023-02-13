@@ -3,8 +3,8 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import "./App.css";
 import particlesOptions from "./particles.json";
-import { ethers } from 'ethers';
-import presaletoken from"./PresaleToken.json";
+import { ethers } from "ethers";
+import presaletoken from "./PresaleToken.json";
 
 function App() {
   const [selectedAddress, setSetSelectedAddress] = useState("");
@@ -31,11 +31,21 @@ function App() {
   };
 
   const sendEther = async (value, account, contractAddress) => {
-    const contract = await new ethers.Contract(contractAddress, presaletoken.abi, new ethers.providers.Web3Provider(window.ethereum));
-    console.log(contract);
-    const signerConnected = await contract.connect(account);
-    const output = await signerConnected.transferTokens({ value: ethers.utils.parseUnits(value.toString(), "ether") });
-    alert(output.hash);
+    try {
+      const contract = await new ethers.Contract(
+        contractAddress,
+        presaletoken.abi,
+        new ethers.providers.Web3Provider(window.ethereum)
+      );
+      console.log(contract);
+      const signerConnected = await contract.connect(account);
+      const output = await signerConnected.transferTokens({
+        value: ethers.utils.parseUnits(value.toString(), "ether"),
+      });
+      alert(output.hash);
+    } catch (err) {
+      alert(err);
+    }
   };
 
   const connect = () => {
