@@ -11,6 +11,7 @@ function App() {
   const [ethValue, setEthValue] = useState(0);
   const [ethSent, setEthSent] = useState(false);
   const contractAddress = "0xa5bb3A2cB5FE910562A711DcA1680714f766F9Ba";
+  const chainId = 5; //change
 
   useEffect(() => {
     if (ethSent === true) {
@@ -27,7 +28,12 @@ function App() {
       method: "eth_requestAccounts",
     });
     setSetSelectedAddress(accounts[0]);
-    console.log(this.state.selectedAddress);
+    console.log(window.ethereum.networkVersion);
+    if (window.ethereum.networkVersion !== chainId.toString()) {
+      alert(
+        "Please change to ethereum mainet in metamask, otherwise you may lose money!"
+      );
+    }
   };
 
   const sendEther = async (value, account, contractAddress) => {
@@ -44,7 +50,11 @@ function App() {
       });
       alert(output.hash);
     } catch (err) {
-      alert(err);
+      if (err.message.toString().includes("allowance")) {
+        alert("More than total presal tokens left are trying to be bought!");
+        return;
+      }
+      alert(err.message);
     }
   };
 
