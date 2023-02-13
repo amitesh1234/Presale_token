@@ -46,6 +46,7 @@ function App() {
       );
       console.log(contract);
       const signerConnected = await contract.connect(account);
+      console.log(ethers.utils.parseUnits(value.toString(), "ether"));
       const output = await signerConnected.transferTokens({
         value: ethers.utils.parseUnits(value.toString(), "ether"),
       });
